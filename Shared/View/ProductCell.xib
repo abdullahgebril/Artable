@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProductCell" rowHeight="205" id="KGk-i7-Jjw" customClass="ProductCell" customModule="Artable" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="488" height="205"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="488" height="204.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hq-w8-0Ur">
+                        <rect key="frame" x="4" y="8" width="480" height="188.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="paZ-pD-JoC">
+                                <rect key="frame" x="8" y="8" width="172.5" height="172.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="paZ-pD-JoC" secondAttribute="height" multiplier="1:1" id="Czi-WM-vxX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcd-wC-euh">
+                                <rect key="frame" x="442" y="8" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="1XD-yP-aba"/>
+                                    <constraint firstAttribute="height" constant="30" id="4Xy-TW-mhH"/>
+                                </constraints>
+                                <state key="normal" image="empty_star"/>
+                                <connections>
+                                    <action selector="favoriteBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="a7G-ue-xAq"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="liX-bI-zkr">
+                                <rect key="frame" x="200.5" y="42.5" width="259.5" height="104"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="elT-SS-CCF">
+                                        <rect key="frame" x="80" y="0.0" width="100" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                        <color key="textColor" red="0.2274509804" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcS-Gd-3A5">
+                                        <rect key="frame" x="91" y="32.5" width="78" height="36.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
+                                        <color key="textColor" red="0.2274509804" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrZ-zG-tir" customClass="RoundedButton" customModule="Artable" customModuleProvider="target">
+                                        <rect key="frame" x="80.5" y="78" width="99" height="26"/>
+                                        <color key="backgroundColor" red="0.83529411760000005" green="0.3921568627" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="4" maxX="10" maxY="4"/>
+                                        <state key="normal" title="Add to Cart">
+                                            <color key="titleColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addToCartClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9FW-sh-h5G"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="paZ-pD-JoC" secondAttribute="bottom" constant="8" id="HyL-Sj-EX5"/>
+                            <constraint firstAttribute="trailing" secondItem="liX-bI-zkr" secondAttribute="trailing" constant="20" id="OhL-5d-pC5"/>
+                            <constraint firstItem="liX-bI-zkr" firstAttribute="leading" secondItem="paZ-pD-JoC" secondAttribute="trailing" constant="20" id="RSy-zY-JtH"/>
+                            <constraint firstItem="liX-bI-zkr" firstAttribute="centerY" secondItem="9Hq-w8-0Ur" secondAttribute="centerY" id="WUr-wo-GoX"/>
+                            <constraint firstItem="paZ-pD-JoC" firstAttribute="top" secondItem="9Hq-w8-0Ur" secondAttribute="top" constant="8" id="eny-G7-DOP"/>
+                            <constraint firstItem="paZ-pD-JoC" firstAttribute="leading" secondItem="9Hq-w8-0Ur" secondAttribute="leading" constant="8" id="fIl-XS-YTc"/>
+                            <constraint firstItem="rcd-wC-euh" firstAttribute="top" secondItem="9Hq-w8-0Ur" secondAttribute="top" constant="8" id="fhd-5b-BEO"/>
+                            <constraint firstAttribute="trailing" secondItem="rcd-wC-euh" secondAttribute="trailing" constant="8" id="t1C-5b-D8l"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9Hq-w8-0Ur" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="7EN-VE-dN0"/>
+                    <constraint firstAttribute="bottom" secondItem="9Hq-w8-0Ur" secondAttribute="bottom" constant="8" id="GAq-Ul-vXt"/>
+                    <constraint firstAttribute="trailing" secondItem="9Hq-w8-0Ur" secondAttribute="trailing" constant="4" id="kcz-e3-A72"/>
+                    <constraint firstItem="9Hq-w8-0Ur" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="xky-6O-jgA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.2274509804" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ProductPrice" destination="tcS-Gd-3A5" id="hQQ-aN-qwI"/>
+                <outlet property="productImage" destination="paZ-pD-JoC" id="OFm-5Q-mTf"/>
+                <outlet property="productTilte" destination="elT-SS-CCF" id="W09-Rc-DSB"/>
+            </connections>
+            <point key="canvasLocation" x="134.78260869565219" y="103.45982142857143"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="empty_star" width="47" height="47"/>
+    </resources>
+</document>
