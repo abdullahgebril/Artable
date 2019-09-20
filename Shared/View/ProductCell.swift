@@ -28,8 +28,15 @@ class ProductCell: UITableViewCell {
         
         productTilte.text = product.name
         if let url = URL(string: product.imageurl){
+            productImage.kf.indicatorType = .activity
+            let image = UIImage(named: "placeholder")
             productImage.kf.setImage(with: url)
             
+        }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let price = formatter.string(from: product.price as NSNumber) {
+            ProductPrice.text = price
         }
         
     }

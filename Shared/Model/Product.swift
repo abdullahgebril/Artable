@@ -34,5 +34,31 @@ struct Product {
 
 
     }
+    init(name: String,id: String ,imageurl: String,category: String,price: Double, stock: Double , description : String, timeStamp: Timestamp ) {
+        self.name = name
+        self.imageurl = imageurl
+        self.id = id
+        self.category = category
+        self.price = price
+        self.description = description
+        self.timeStamp = timeStamp
+        self.stock = 0.0
+    }
+    
+    func convertModelToDictionary(product : Product) -> [String: Any]
+    {
+        let data : [String : Any] = [
+        "name" : product.name,
+        "id": product.id,
+        "imageurl": product.imageurl,
+        "category": product.category ,
+        "price": product.price,
+        "description": product.description,
+        "timeStamp": product.timeStamp,
+        "stock": product.stock
+        ]
+        return data
+    }
+    
     
 }
