@@ -21,7 +21,6 @@ class ProductDetails: UIViewController {
     
     //Varaibles
     var product:Product!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

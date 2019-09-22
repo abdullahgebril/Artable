@@ -15,9 +15,11 @@ class AddEditProductVc: UIViewController {
     // Varaible
     var producttoEditing : Product?
     var category: Category!
-    var name:String = ""
-    var price:Double = 0.0
-    var descriptionproduct:String = ""
+    var name: String = ""
+    var price: Double = 0.0
+    var prodescription: String = ""
+    
+    
     
     //Outlets
     @IBOutlet weak var productName: UITextField!
@@ -30,115 +32,95 @@ class AddEditProductVc: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(launch))
-        tap.numberOfTapsRequired = 1
         
-        productimage.addGestureRecognizer(tap)
-        if let productedit = producttoEditing {
+        if let product = producttoEditing {
             
-            // category will be edit
-            
-            productName.text = productedit.name
-          productPrice.text = String (productedit.price)
-            ProductDescription.text = productedit.description
-            
-            addproductBtn.setTitle("Saving Changes", for: .normal)
-            let url = URL(string: productedit.imageurl)
+            productName.text = product.name
+            productPrice.text = String(product.price)
+            ProductDescription.text = product.description
+            addproductBtn.setTitle("Saving changes", for: .normal)
+            let url  = URL(string: product.imageurl)
             productimage.contentMode = .scaleAspectFill
             productimage.kf.setImage(with: url)
-            
-    }
-    }
+        }
+
     
-    
-        @objc func launch() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(launchImagePicker))
+      tap.numberOfTapsRequired = 1
+        productimage.addGestureRecognizer(tap)
+    }
+ 
+        @objc func launchImagePicker() {
         launchPickerImage()
     }
 
-
-
-    
     @IBAction func addProduct(_ sender: Any) {
-        activityindictor.startAnimating()
-        uploadImage()
+        
+     
+        
+        uplaodImages()
+     
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "HandelTableViewData"), object: self)
+        
+   
     }
-    func uploadImage() {
-        guard let image = productimage.image , let name = productName.text , !name.isEmpty,let des = ProductDescription.text , !des.isEmpty  , let pricestring = productPrice.text ,
-            let price  =  Double(pricestring) else {
-            simpleAlartforSomeError(title: "Error", message: "must add name and price and select image")
-            return
-        }
+    
+    
+    
+    func uplaodImages() {
+        guard let name = productName.text , !name.isEmpty ,
+            let image = productimage.image ,
+            let description = ProductDescription.text , !description.isEmpty ,
+        let pricestring = productPrice.text ,
+            let price = Double(pricestring) else {
+                simpleAlartforSomeError(title: "Error", message: "Please fill out all feilds")
+                return}
         self.name = name
         self.price = price
-        self.descriptionproduct = des
+        self.prodescription = description
+        activityindictor.startAnimating()
         
-        //Turn image to Data
-        guard let imageData = image.jpegData(compressionQuality: 0.2) else {return }
+        guard let imageData = image.jpegData(compressionQuality: 0.2)  else {return}
         
-        //Creat storge image refernce
-        let imgRef = Storage.storage().reference().child("/Products Image/\(name).jpg")
+        let imagaRef = Storage.storage().reference().child("/ProductImages/\(name).jpg")
         
-        //metaData
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
         
-        //UploadData
-        imgRef.putData(imageData, metadata: metaData) { (metaData, error) in
+        imagaRef.putData(imageData, metadata: metaData) { (mateData, error) in
             if let error = error {
-                debugPrint(error.localizedDescription)
-               self.simpleAlartforSomeError(title: "Error", message: "Cann't upload Data")
+               self.simpleAlartforSomeError(title: "Error", message: "error in upload data")
                 self.activityindictor.stopAnimating()
                 return
             }
-            imgRef.downloadURL(completion: { (url, error) in
+            imagaRef.downloadURL(completion: { (url, error) in
                 if let error = error {
-                    debugPrint(error.localizedDescription)
-                    self.simpleAlartforSomeError(title: "Error", message: "Cann't upload Data")
+                 self.simpleAlartforSomeError(title: "Error", message: "error in upload data")
                     self.activityindictor.stopAnimating()
                     return
                 }
-                
-                guard let url = url  else{return}
-                
-               self.addDocument(url: url.absoluteString)
+                guard let url = url else {return}
+            self.uplaodDocument(url: url.absoluteString)
             })
-         
         }
-        
     }
-    
-    
-    func addDocument(url: String) {
+    func uplaodDocument(url: String) {
         
         
-        let docRef : DocumentReference!
-//
-//        let formatter =  NumberFormatter()
-//        formatter.numberStyle = .currency
-//        if let price = formatter.string(from: product!.price as NSNumber)
-
-  
-        var product = Product(name: name , id: "", imageurl: url, category: category.id,price: price, stock: 0, description: descriptionproduct, timeStamp: Timestamp())
-        
-        
-        if let productEdit = producttoEditing {
-            docRef = Firestore.firestore().collection("Product").document(productEdit.id)
-            product.id = productEdit.id
-            
+        let docmentRef: DocumentReference!
+        var product = Product(name: name, id: "", imageurl: url, category: category.id, price: price, stock: 0.0, description: prodescription, timeStamp: Timestamp())
+        if let producttoEdit = producttoEditing {
+           docmentRef = Firestore.firestore().collection("Product").document(producttoEdit.id)
+            product.id = producttoEdit.id
             
         }else {
-            docRef = Firestore.firestore().collection("Product").document()
-            product.id = docRef.documentID
+              docmentRef = Firestore.firestore().collection("Product").document()
+            product.id  = docmentRef.documentID
         }
-        
-        
-         let data = product.convertModelToDictionary(product: product)
-        docRef.setData(data, merge: true) { (error) in
-            
-            if let error  = error {
-                debugPrint(error)
-                self.simpleAlartforSomeError(title: "Error", message: "cann't upload data")
+    let data = product.convertModelToDictionary(product: product)
+        docmentRef.setData(data, merge: true) { (error) in
+            if let error = error {
+                self.simpleAlartforSomeError(title: "Error", message: "error in upload data")
                 self.activityindictor.stopAnimating()
                 return
             }
@@ -146,9 +128,11 @@ class AddEditProductVc: UIViewController {
         }
         
         
-    }
-}
+        
+      
 
+}
+    }
 extension AddEditProductVc: UIImagePickerControllerDelegate , UINavigationControllerDelegate  {
     
     func launchPickerImage() {
@@ -156,12 +140,12 @@ extension AddEditProductVc: UIImagePickerControllerDelegate , UINavigationContro
         imagepicker.delegate = self
         present(imagepicker, animated: true, completion: nil)
     }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard let image = info[.originalImage] else {return }
+
+        guard let image = info[.originalImage] as? UIImage else{return }
         productimage.contentMode = .scaleAspectFill
-        productimage.image = image as! UIImage
+        productimage.image = image
         dismiss(animated: true, completion: nil)
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -170,3 +154,7 @@ extension AddEditProductVc: UIImagePickerControllerDelegate , UINavigationContro
     
     
 }
+
+
+
+

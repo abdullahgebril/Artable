@@ -16,7 +16,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ODr-vN-IYm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5ws-KT-eih">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.2274509804" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -237,7 +236,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="addProduct:" destination="ieN-uP-V0c" eventType="touchUpInside" id="fSZ-ZF-5rM"/>
+                                    <action selector="addProduct:" destination="ieN-uP-V0c" eventType="touchUpInside" id="jGF-za-WRv"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="pwT-tg-xpo">
@@ -289,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ws-qx-OP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="408.69565217391306" y="668.97321428571422"/>
+            <point key="canvasLocation" x="1494" y="650"/>
         </scene>
         <!--Admin ProductVC-->
         <scene sceneID="keW-ET-eiY">
@@ -329,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXv-fv-L3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-407" y="663"/>
+            <point key="canvasLocation" x="525" y="698"/>
         </scene>
     </scenes>
     <resources>

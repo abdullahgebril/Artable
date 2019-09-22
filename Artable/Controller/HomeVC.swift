@@ -213,38 +213,3 @@ extension HomeVC : UICollectionViewDelegate,UICollectionViewDataSource,UICollect
 
 
 
-// fetch document
-//    func fetchData(){
-//
-//
-//
-//
-//        func fetchData() {
-//            let docRef = Firestore.firestore().collection("Categories").document("gblH5GPHgoGEuWbs2TqD")
-//
-//            docRef.addSnapshotListener { (snap, error) in
-//                guard let data = snap?.data() else{return}
-//           let category = Category.init(data: data)
-//                self.categories.append(category)
-//                self.collectionview.reloadData()
-//            }
-
-//        }
-//    func fetchData(){
-//
-//        let docref = Firestore.firestore().collection("Categories").document("gblH5GPHgoGEuWbs2TqD")
-//       listener = docref.addSnapshotListener { (snap, error) in
-//
-//         self.categories.removeAll()
-//            guard let data = snap?.data() else{return}
-//
-//
-//            let category = Category(data: data)
-//
-//            self.categories.append(category)
-//           self.collectionview.reloadData()
-//
-//        }
-//
-//    }
-

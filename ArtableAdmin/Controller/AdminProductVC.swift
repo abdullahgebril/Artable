@@ -12,6 +12,7 @@ class AdminProductVC: ProductsVC {
 
     //Varaibles
     var selectedProduct:Product?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +20,14 @@ class AdminProductVC: ProductsVC {
         let editCategorytBtn = UIBarButtonItem(title: "Edit Category", style: .plain, target: self, action: #selector(editCategory))
         
         
-        let addProductBtn = UIBarButtonItem(title: "+ Product", style: .plain, target: self, action: #selector(addProduct))
+        let addProductBtn = UIBarButtonItem(title: "+Product", style: .plain, target: self, action: #selector(addProduct))
         navigationItem.setRightBarButtonItems([editCategorytBtn,addProductBtn], animated: false)
+       
+        
+    }
+    
     
 
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        products.removeAll()
-    }
-    
    @objc func editCategory() {
     performSegue(withIdentifier: "ToEditCategory", sender: self)
         

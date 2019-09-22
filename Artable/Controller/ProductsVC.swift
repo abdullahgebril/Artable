@@ -19,7 +19,11 @@ class ProductsVC: UIViewController {
     
     //Varaibles
     var category: Category!
-    var products = [Product]()
+    var products = [Product]() {
+        didSet{
+            tableview.reloadData()
+        }
+    }
  var  listener: ListenerRegistration!
     var db:Firestore!
     
@@ -32,19 +36,37 @@ class ProductsVC: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         tableview.register(UINib(nibName:"ProductCell" , bundle: nil), forCellReuseIdentifier: "ProductCell")
-        tableview.reloadData()
+ 
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handelTableViewData), name: NSNotification.Name?(NSNotification.Name(rawValue: "HandelTableViewData")), object: nil)
+        
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-         setDocuments()
+  
+
+    @objc func handelTableViewData() {
+            setDocuments()
+        self.tableview.reloadData()
     }
-//    override func viewWillDisappear(_ animated: Bool) {
-//    
-//        listener.remove()
-//        products.removeAll()
-//        tableview.reloadData()
-//        
-//    }
+    
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+    setDocuments()
+    
+    }
+   
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+    
+        listener.remove()
+        products.removeAll()
+        tableview.reloadData()
+   
+        
+    }
     
     func setDocuments() {
         
@@ -81,6 +103,7 @@ extension ProductsVC: UITableViewDelegate,UITableViewDataSource {
         let newIndex = Int(chnage.newIndex)
         products.insert(product, at: newIndex)
         tableview.insertRows(at: [IndexPath(row: newIndex, section: 0)], with: .fade)
+       
     }
 
     
@@ -90,6 +113,7 @@ extension ProductsVC: UITableViewDelegate,UITableViewDataSource {
         let oldIndex = Int(chnage.oldIndex)
         products.remove(at: oldIndex)
         tableview.deleteRows(at: [IndexPath(row: oldIndex, section: 0)], with: .fade)
+        
     }
     
     func onDocumentModified(change: DocumentChange , product: Product) {

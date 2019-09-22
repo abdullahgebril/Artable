@@ -23,6 +23,8 @@
 		20369B7D232FB13100252524 /* ProductDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20145C41232E80D900C92A03 /* ProductDetails.xib */; };
 		20369B7F232FB14900252524 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 201079EC2325C22F00DD9423 /* CategoryCell.xib */; };
 		20369B81232FB15300252524 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 201079F62325DF6F00DD9423 /* ProductCell.xib */; };
+		203873D92337CB0E00EEFF55 /* ProductDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20145C41232E80D900C92A03 /* ProductDetails.xib */; };
+		203873DA2337CB1800EEFF55 /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20145C40232E80D900C92A03 /* ProductDetails.swift */; };
 		20396FD2233017B9006441EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2066650C231D7357003C76FC /* Assets.xcassets */; };
 		20396FD3233017D0006441EB /* ForgotPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20BE876E2324FCDC00E61789 /* ForgotPassword.xib */; };
 		20396FD42330180C006441EB /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2066652F231D7849003C76FC /* LoginStoryboard.storyboard */; };
@@ -36,8 +38,6 @@
 		20396FDE23302AE2006441EB /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 201079EC2325C22F00DD9423 /* CategoryCell.xib */; };
 		20396FDF23302B00006441EB /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201079F52325DF6F00DD9423 /* ProductCell.swift */; };
 		20396FE023302B35006441EB /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 201079F62325DF6F00DD9423 /* ProductCell.xib */; };
-		20396FE123302B3E006441EB /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20145C40232E80D900C92A03 /* ProductDetails.swift */; };
-		20396FE223302B53006441EB /* ProductDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20145C41232E80D900C92A03 /* ProductDetails.xib */; };
 		20396FE423302B6D006441EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2066650C231D7357003C76FC /* Assets.xcassets */; };
 		20396FE523302B77006441EB /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20666507231D7353003C76FC /* HomeVC.swift */; };
 		20396FE623302B82006441EB /* ProductsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201079F12325D97C00DD9423 /* ProductsVC.swift */; };
@@ -379,9 +379,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				203873D92337CB0E00EEFF55 /* ProductDetails.xib in Resources */,
 				20396FE023302B35006441EB /* ProductCell.xib in Resources */,
 				20396FDE23302AE2006441EB /* CategoryCell.xib in Resources */,
-				20396FE223302B53006441EB /* ProductDetails.xib in Resources */,
 				20396FE423302B6D006441EB /* Assets.xcassets in Resources */,
 				20149925232F8933005E679D /* Main.storyboard in Resources */,
 				20B76A882334FACD003430A3 /* GoogleService-Info.plist in Resources */,
@@ -496,7 +496,7 @@
 				20396FDB23302A81006441EB /* Firebase+utilitis.swift in Sources */,
 				20396FE623302B82006441EB /* ProductsVC.swift in Sources */,
 				20396FDD23302A87006441EB /* CategoryCell.swift in Sources */,
-				20396FE123302B3E006441EB /* ProductDetails.swift in Sources */,
+				203873DA2337CB1800EEFF55 /* ProductDetails.swift in Sources */,
 				20145C45232E944400C92A03 /* Product.swift in Sources */,
 				20396FDF23302B00006441EB /* ProductCell.swift in Sources */,
 				201DC0B4233260A600872BC1 /* AddEditProductVc.swift in Sources */,
